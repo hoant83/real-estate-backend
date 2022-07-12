@@ -18,8 +18,16 @@ import { EstateService } from './estate.service';
 export class EstateController {
   constructor(private estateService: EstateService) {}
   @Get()
-  async getAllEstate(): Promise<EstateEntity[]> {
-    const estates = await this.estateService.getAllEstate();
+  async getAllEstate(
+    @Query('type') typeQuery: string,
+    @Query('take') take: number,
+    @Query('skip') skip: number,
+  ): Promise<EstateEntity[]> {
+    const estates = await this.estateService.getAllEstate(
+      typeQuery,
+      take,
+      skip,
+    );
     return estates;
   }
   @Get('/filter')

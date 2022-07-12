@@ -11,8 +11,13 @@ export class EstateService {
     @InjectRepository(EstateEntity)
     private estateRepository: Repository<EstateEntity>,
   ) {}
-  async getAllEstate() {
+  async getAllEstate(typeQuery: string, take: number, skip: number) {
     const estates = await this.estateRepository.find({
+      where: {
+        type: typeQuery,
+      },
+      take: take || 4,
+      skip: skip || 0,
       order: { id: 'ASC' },
       relations: ['userEntities'],
     });
