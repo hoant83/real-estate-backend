@@ -21,8 +21,8 @@ let EstateController = class EstateController {
     constructor(estateService) {
         this.estateService = estateService;
     }
-    async getAllEstate() {
-        const estates = await this.estateService.getAllEstate();
+    async getAllEstate(typeQuery, take, skip) {
+        const estates = await this.estateService.getAllEstate(typeQuery, take, skip);
         return estates;
     }
     async getEstateWithFilter(take, skip, category, price, gerion) {
@@ -45,8 +45,11 @@ let EstateController = class EstateController {
 };
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('type')),
+    __param(1, (0, common_1.Query)('take')),
+    __param(2, (0, common_1.Query)('skip')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String, Number, Number]),
     __metadata("design:returntype", Promise)
 ], EstateController.prototype, "getAllEstate", null);
 __decorate([

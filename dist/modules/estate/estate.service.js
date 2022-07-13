@@ -21,8 +21,13 @@ let EstateService = class EstateService {
     constructor(estateRepository) {
         this.estateRepository = estateRepository;
     }
-    async getAllEstate() {
+    async getAllEstate(typeQuery, take, skip) {
         const estates = await this.estateRepository.find({
+            where: {
+                type: typeQuery,
+            },
+            take: take || 4,
+            skip: skip || 0,
             order: { id: 'ASC' },
             relations: ['userEntities'],
         });

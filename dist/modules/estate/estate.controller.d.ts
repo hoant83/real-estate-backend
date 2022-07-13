@@ -5,7 +5,7 @@ import { EstateService } from './estate.service';
 export declare class EstateController {
     private estateService;
     constructor(estateService: EstateService);
-    getAllEstate(): Promise<EstateEntity[]>;
+    getAllEstate(typeQuery: string, take: number, skip: number): Promise<EstateEntity[]>;
     getEstateWithFilter(take: number, skip: number, category: string, price: number, gerion: string): Promise<EstateEntity[]>;
     getEstateById(id: number): Promise<EstateEntity>;
     postEstateById(estate: CreateEstateDto): Promise<EstateEntity>;

@@ -6,7 +6,7 @@ import { Repository } from 'typeorm';
 export declare class EstateService {
     private estateRepository;
     constructor(estateRepository: Repository<EstateEntity>);
-    getAllEstate(): Promise<EstateEntity[]>;
+    getAllEstate(typeQuery: string, take: number, skip: number): Promise<EstateEntity[]>;
     getEstateById(id: number): Promise<EstateEntity>;
     createNewEstate(estateDto: CreateEstateDto): Promise<EstateEntity>;
     updateEstateById(id: number, estateDto: UpdateEstateDto): Promise<EstateEntity>;
